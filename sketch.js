@@ -61,8 +61,6 @@ function highlight(event) {
         const col = randomRGB();
         console.log(col);
         event.target.style.backgroundColor = col;
-
-        event.target.removeEventListener('mouseover', highlight);
     }
 }
 
