@@ -22,11 +22,7 @@ function generate(size) {
             box.dataset.coord = [x, y];
             box.addEventListener('mouseover', (event) => {
                 box.classList.add('hover-effect');
-            });
-
-            box.addEventListener('')
-
-    
+            });    
             boxRow.appendChild(box);
         }
     
