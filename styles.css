@@ -29,9 +29,3 @@ div.cell-row {
     flex: 1;
     box-sizing: border-box;
 }
-
-
-
-.hover-effect {
-    background-color: black;
-}

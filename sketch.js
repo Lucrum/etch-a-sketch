@@ -1,11 +1,20 @@
 const INITIAL_SIZE = 16;
 const MAX_SIZE = 100;
+let FANCY = false;
 
 const body = document.querySelector('body');
 const generateButton = document.querySelector('#generate-grid');
+const fancyToggle = document.querySelector('#fancy-mode');
 let boxGrid;
 
 generateButton.addEventListener('click', submitSize);
+fancyToggle.addEventListener('change', function() {
+    if (this.checked) {
+        FANCY = true;
+    } else {
+        FANCY = false;
+    }
+});
 
 generate(INITIAL_SIZE);
 
@@ -20,9 +29,7 @@ function generate(size) {
             const box = document.createElement('div');
             box.classList.add('cell');
             box.dataset.coord = [x, y];
-            box.addEventListener('mouseover', (event) => {
-                box.classList.add('hover-effect');
-            });    
+            box.addEventListener('mouseover', highlight);    
             boxRow.appendChild(box);
         }
     
@@ -46,3 +53,27 @@ function submitSize() {
         alert("Invalid size. Size should be less than 100.");
     }
 }
+
+function highlight(event) {
+    if (!FANCY) {
+        event.target.style.backgroundColor = 'black';
+    } else {
+        const col = randomRGB();
+        console.log(col);
+        event.target.style.backgroundColor = col;
+
+        event.target.removeEventListener('mouseover', highlight);
+    }
+}
+
+function randomBetween(min, max){
+    return (min + Math.floor(Math.random() * (max - min + 1)));
+}
+
+function randomRGB() {
+    const r = randomBetween(0, 255);
+    const g = randomBetween(0, 255);
+    const b = randomBetween(0, 255);
+    return `rgb(${r},${g},${b})`;
+}
+
