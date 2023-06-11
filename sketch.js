@@ -1,4 +1,4 @@
-const size = 16;
+const INITIAL_SIZE = 16;
 const MAX_SIZE = 100;
 
 const body = document.querySelector('body');
@@ -7,7 +7,7 @@ let boxGrid;
 
 generateButton.addEventListener('click', submitSize);
 
-generate(16);
+generate(INITIAL_SIZE);
 
 function generate(size) {
     boxGrid = document.createElement('div');
@@ -23,10 +23,9 @@ function generate(size) {
             box.addEventListener('mouseover', (event) => {
                 box.classList.add('hover-effect');
             });
-    
-            box.addEventListener('mouseout', (event) => {
-                box.classList.remove('hover-effect');
-            });
+
+            box.addEventListener('')
+
     
             boxRow.appendChild(box);
         }
@@ -40,14 +39,14 @@ function generate(size) {
 function submitSize() {
     let size = +prompt("Enter grid size: ");
 
+    if (size <=0) {
+        size = INITIAL_SIZE;
+    }
+
     if (size <= MAX_SIZE) {
         boxGrid.remove();
         generate(size);
     } else {
-
+        alert("Invalid size. Size should be less than 100.");
     }
-}
-
-function error() {
-
 }
